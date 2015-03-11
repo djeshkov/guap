@@ -1,3 +1,5 @@
+# coding: utf-8
+
 from __future__ import absolute_import, print_function
 
 from datetime import datetime
@@ -86,6 +88,9 @@ def populate_database():
         return
 
     s1 = Client(email='js@gmail.com', password='1245', name='John', country='russia', address='192111 Moscow')
+
+    c1 = Category(name=u'Брюки')
+    c1 = Category(name=u'Обувь')
 
 
 

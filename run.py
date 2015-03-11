@@ -15,13 +15,10 @@ from models import *
 
  
 # configuration
-DATABASE = '/tmp/flaskr.db'
 DEBUG = True
 SECRET_KEY = 'development key'
 USERNAME = 'admin'
 PASSWORD = 'default'
-
-
 
 
 # create our little application :)
@@ -32,29 +29,18 @@ app.config.from_object(__name__)
 
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
-def connect_db():
-    return sqlite3.connect(app.config['DATABASE'])
-
-
-def init_db():
-    with closing(connect_db()) as db:
-        with app.open_resource('schema.sql') as f:
-            db.cursor().executescript(f.read())
-        db.commit()
-
 @app.before_request
 def before_request():
-    g.db = connect_db()
+    pass
  
 @app.teardown_request
 def teardown_request(exception):
-    g.db.close()
+    pass
 
 @app.route('/')
+@db_session
 def show_entries():
-    cur = g.db.execute('select title, text from entries order by id desc')
-    entries = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
-    return render_template('index.html', entries=entries)
+    return render_template('index.html')
 
 @app.route('/contacts')
 @db_session
@@ -64,13 +50,19 @@ def index():
 @app.route('/catalog')
 @db_session
 def get_categories():
-    categories = Category.name
-    return to_json(db, {'categories': categories})
+    categories = Category.select().order_by(Category.name)
+    return render_template('catalog.html', categories=categories)
 
-
-
+@app.route('/category/<id>')
+@db_session
+def category(id):
+    category = Category[id]
+    return render_template('category.html', category=category)
 
 
 if __name__ == '__main__':
+
+
+
 	app.run(host='0.0.0.0',debug = True)
 
