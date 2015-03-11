@@ -65,7 +65,7 @@ def index():
 @db_session
 def get_categories():
     categories = Category.name
-    return to_json(db, {'categories': name})
+    return to_json(db, {'categories': categories})
 
 
 
