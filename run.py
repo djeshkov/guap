@@ -53,10 +53,10 @@ def show_entries():
     cur = g.db.execute('select title, text from entries order by id desc')
     entries = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
     return render_template('index.html', entries=entries)
-@app.route('/clients')
+@app.route('/contacts')
 @db_session
 def index():
-    return render_template("clients.html")
+    return render_template("contacts.html")
 
 
 
