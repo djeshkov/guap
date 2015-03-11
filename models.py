@@ -41,7 +41,7 @@ class Discount(db.Entity):
 
 
 class Brand(db.Entity):
-    Name = Required(unicode)
+    name = Required(unicode)
     country = Required(unicode)
     description = Optional(unicode)
     clothing = Set("Clothing")
@@ -53,7 +53,7 @@ class Category(db.Entity):
 
 
 class Clothing(db.Entity):
-    id = PrimaryKey(int)
+    id = PrimaryKey(int, auto=True)
     name = Required(unicode)
     description = Optional(unicode)
     picture = Optional(buffer)
@@ -90,7 +90,11 @@ def populate_database():
     s1 = Client(email='js@gmail.com', password='1245', name='John', country='russia', address='192111 Moscow')
 
     c1 = Category(name=u'Брюки')
-    c1 = Category(name=u'Обувь')
+    c2 = Category(name=u'Обувь')
+
+    b1 = Brand (name = 'Nike', country = 'usa')
+
+    cl1 = Clothing(name=u'Штаны обыкновенные',price = 500, category = c1, brand = b1)
 
 
 
