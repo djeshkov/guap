@@ -61,7 +61,7 @@ def index():
 
 @app.route('/catalog')
 @db_session
-def get_categories:
+def get_categories():
     categories = Category.name
     return to_json(db, {'categories': name})
 
