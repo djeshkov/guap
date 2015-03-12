@@ -1,9 +1,12 @@
 <h1>
 
-{% for categories in categories %}
+	<ul>
+		{% for categories in categories %}
 
-<div class="Catalog">{{categories.name}}</div>
+		  <li><a href="{{categories.name}}">{{categories.name}}</a></li>
 
-{% endfor %}
 
+		{% endfor %}
+
+	</ul>
 </h1>
