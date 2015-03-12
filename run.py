@@ -53,7 +53,7 @@ def get_categories():
     categories = Category.select().order_by(Category.name)
     return render_template('catalog.html', categories=categories)
 
-@app.route('/category/<name>')
+@app.route('/catalog/<name>')
 @db_session
 def clothing(name):
     cat = Category.get(name=name)
