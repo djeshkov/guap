@@ -74,6 +74,15 @@ def create_brand_name():
         return render_template('create_brand.html')
 
 
+@app.route('/admin/brands/delete', methods=['POST'])
+@db_session
+def delete_brand_id():
+    brand = Brand[request.form['id']]
+    brand.delete()
+    url = url_for('edit_brands')
+    return redirect(url)
+
+
 
 
 

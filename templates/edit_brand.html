@@ -4,3 +4,7 @@
     <p>Country :<input type="text" name="country" value="{{brand.country}}"></p>
     <p><input type="submit" value="Сохранить">
 </form>
+<form action="/admin/brands/delete" method="POST">
+    <p><input type="hidden" name="id", value="{{brand.id}}"></p>
+    <p><input type="submit" value="Удалить">
+</form>
