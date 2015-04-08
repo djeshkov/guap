@@ -42,6 +42,16 @@ def teardown_request(exception):
 def show_entries():
     return render_template('index.html')
 
+@app.route('/admin')
+@db_session
+def show_adminpan():
+    return render_template('admin.html')
+
+@app.route('/admin/brands')
+@db_session
+def show_adminpancat(category):
+    return render_template('brands.html')
+
 @app.route('/contacts')
 @db_session
 def index():

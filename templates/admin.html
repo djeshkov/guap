@@ -1,0 +1,20 @@
+<h1>
+
+
+	<ul>
+		{% for categories in categories %}
+
+		  <li><a href="catalog/{{categories.name}}">{{categories.name}}</a></li>
+
+
+		{% endfor %}
+
+	</ul>
+
+      <ul>
+          <li><a href="/admin/brands">Бренды</a></li>
+          <li><a href="/admin/clothing">Товары</a></li>
+          <li><a href="/admin/clients">Клиенты</a></li>
+
+        </ul>
+</h1>
