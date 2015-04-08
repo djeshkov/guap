@@ -4,10 +4,16 @@
 	<ul>
 		{% for brands in brands %}
 
-		  <li><a href="admin/brands/{{brands.name}}">{{brands.name}}</a></li>
+		  <li><a href="/admin/brands/{{brands.id}}">{{brands.name}}</a></li>
 
 
 		{% endfor %}
 
 	</ul>
+
+
+    <a href="/admin/brands/create">
+   <button>Добавить новый</button>
+</a>
+
 </h1>

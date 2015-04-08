@@ -53,6 +53,30 @@ def edit_brands():
     brands = Brand.select().order_by(Brand.name)
     return render_template('brands.html', brands=brands)
 
+@app.route('/admin/brands/<id>', methods=['GET', 'POST'])
+@db_session
+def edit_brand_name(id):
+    brand = Brand[id]
+    if request.method == 'POST':
+        brand.name = request.form['name']
+        brand.country = request.form['country']
+    return render_template('edit_brand.html', brand=brand)
+
+@app.route('/admin/brands/create', methods=['GET', 'POST'])
+@db_session
+def create_brand_name():
+    if request.method == 'POST':
+        brand = Brand(name=request.form['name'], country= request.form['country'])
+        flush()
+        url = url_for('edit_brands')
+        return redirect(url)
+    else:
+        return render_template('create_brand.html')
+
+
+
+
+
 @app.route('/admin/clients')
 @db_session
 def edit_clients():

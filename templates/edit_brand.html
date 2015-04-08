@@ -1,0 +1,6 @@
+<h1>Редактирование брэнда</h1>
+<form action="/admin/brands/{{ brand.id }}" method="POST">
+    <p>Name :<input type="text" name="name", value="{{brand.name}}"></p>
+    <p>Country :<input type="text" name="country" value="{{brand.country}}"></p>
+    <p><input type="submit" value="Сохранить">
+</form>
