@@ -1,9 +1,12 @@
 <h1>
 
+
 	<ul>
+	{% for c in cat.clothing %}
+	    <li>{{ c.name }}</li>
+	{% endfor %}
+	</ul>
 
-
-	{{cat.clothing.name}}
 
 
 	
