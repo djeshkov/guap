@@ -49,8 +49,19 @@ def show_adminpan():
 
 @app.route('/admin/brands')
 @db_session
-def show_adminpancat(category):
-    return render_template('brands.html')
+def edit_brands():
+    brands = Brand.select().order_by(Brand.name)
+    return render_template('brands.html', brands=brands)
+
+@app.route('/admin/clients')
+@db_session
+def edit_clients():
+    return render_template('clients.html')
+
+@app.route('/admin/goods')
+@db_session
+def edit_goods():
+    return render_template('goods.html')
 
 @app.route('/contacts')
 @db_session
