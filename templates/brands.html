@@ -2,12 +2,18 @@
 
 
 	<ul>
-		{% for categories in categories %}
+		{% for brands in brands %}
 
-		  <li><a href="catalog/{{categories.name}}">{{categories.name}}</a></li>
+		  <li><a href="/admin/brands/{{brands.id}}">{{brands.name}}</a></li>
 
 
 		{% endfor %}
 
 	</ul>
+
+
+    <a href="/admin/brands/create">
+   <button>Добавить новый</button>
+</a>
+
 </h1>
