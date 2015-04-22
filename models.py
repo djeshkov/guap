@@ -51,12 +51,17 @@ class Category(db.Entity):
     name = Required(unicode)
     clothing = Set("Clothing")
 
+class Images(db.Entity):
+    name = Required(unicode)
+    type = Required(unicode)
+    path = Required(unicode)
+    Clothing = Required("Clothing")
 
 class Clothing(db.Entity):
     id = PrimaryKey(int, auto=True)
     name = Required(unicode)
     description = Optional(unicode)
-    picture = Optional(buffer)
+    picture = Set("Images")
     price = Required(Decimal)
     category = Required(Category)
     brand = Required(Brand)
