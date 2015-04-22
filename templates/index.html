@@ -1,10 +1,16 @@
 <!DOCTYPE html>
+
+
+
 <html lang="en">
 <head>
   <title>Home - Home Page | Design Company - Free Website Template from Templatemonster.com</title>
   <meta charset="utf-8">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/reset.css') }}">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/my.css') }}">
+
 
   <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.4.2.min.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/cufon-yui.js') }}"></script>
@@ -13,6 +19,7 @@
   <script type="text/javascript" src="{{ url_for('static', filename='js/roundabout_shapes.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/gallery_init.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/cufon-replace.js') }}"></script>
+
 
 
 
@@ -32,6 +39,7 @@
 </head>
 
 <body>
+  {% include 'header.html' %}
   <!-- header -->
   <header>
     <div class="container">
