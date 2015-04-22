@@ -17,17 +17,27 @@
 <h1>
 
 
+ <!--<div class="list-group">-->
+  <!--<a href="#" class="list-group-item active">-->
+    <!--<h4 class="list-group-item-heading">List group item heading</h4>-->
+    <!--<p class="list-group-item-text">...</p>-->
+  <!--</a>-->
+<!--</div>-->
 
 
-	<ul>
+	<!--<ul>-->
 		{% for categories in categories %}
-
-		  <li><a href="catalog/{{categories.name}}">{{categories.name}}</a></li>
+           <div class="list-group">
+             <a href="catalog/{{categories.name}}" class="list-group-item ">
+             <h4 class="list-group-item-heading">{{categories.name}}</h4>
+             <p class="list-group-item-text"></p>
+             </a>
+           </div>
 
 
 		{% endfor %}
 
-	</ul>
+	<!--</ul>-->
 </h1>
 
 </div>
