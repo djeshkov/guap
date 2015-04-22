@@ -4,11 +4,13 @@ mark, rp, rt, ruby, summary, time{ display: inline }
 
 /* Global properties ======================================================== */
 body { 
-	background:#212222; 
+
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:100%; 
 	line-height:1.125em;
 	color:#242424;
+
+
 }
 html { min-width:1000px;}
 html, body { height:100%;}
@@ -20,21 +22,21 @@ html, body { height:100%;}
 	margin: 0 auto;
 	position: relative;
 	width: 1000px;
-	font-size:.8125em;
+	/* font-size:.8125em; */
 }
 
 	/* Header */
 	header{
 		height:72px;
 		overflow:hidden;
-		background:url(../images/header-bg.gif) 0 0 repeat-x;
+
 	}
 	
 	/*Gallery*/
 	#gallery {
-		height:496px;
+		height:696px;
 		overflow:hidden;
-		background:url(../images/gallerry-bg.gif) 0 0 repeat-x;
+	   /* background:url(../images/gallerry-bg.gif) 0 0 repeat-x; */
 	}
 	
 	/* Content */
