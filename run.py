@@ -51,7 +51,7 @@ def show_adminpan():
 @db_session
 def edit_brands():
     brands = Brand.select().order_by(Brand.name)
-    return render_template('brands.html', brands=brands)
+    return render_template('/admin/brands.html', brands=brands)
 
 @app.route('/admin/brands/<id>', methods=['GET', 'POST'])
 @db_session
@@ -91,10 +91,31 @@ def delete_brand_id():
 def edit_clients():
     return render_template('clients.html')
 
-@app.route('/admin/goods')
+@app.route('/admin/clothing')
 @db_session
 def edit_goods():
-    return render_template('goods.html')
+    clothing = Clothing.select().order_by(Clothing.name)
+
+    return render_template('/admin/clothing.html', clothing=clothing)
+
+@app.route('/admin/clothing/create', methods=['GET', 'POST'])
+@db_session
+def create_clothing_name():
+    if request.method == 'POST':
+
+        clothing = Clothing(name=request.form['name'], price= request.form['price'], category= request.form['Category'], brand= request.form['Brand'])
+        flush()
+        url = url_for('edit_brands')
+        return redirect(url)
+    else:
+        brands = Brand.select().order_by(Brand.name)
+        Categories = Category.select().order_by(Category.name)
+
+        return render_template('/admin/create_clothing.html', brands=brands, categories=Categories)
+
+
+
+
 
 @app.route('/contacts')
 @db_session
