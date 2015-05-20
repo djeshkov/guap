@@ -110,7 +110,6 @@ def create_clothing_name():
     else:
         brands = Brand.select().order_by(Brand.name)
         Categories = Category.select().order_by(Category.name)
-
         return render_template('/admin/create_clothing.html', brands=brands, categories=Categories)
 
 

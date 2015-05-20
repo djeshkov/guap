@@ -1,37 +1,23 @@
 <!DOCTYPE html>
 
-
-
-<html lang="en">
 <head>
+
   <meta charset="utf-8">
 
+
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/theme.css') }}">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">
-
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/my.css') }}">
-
-
 </head>
 
+<body>
 
+{% include 'header.html' %}
 
 <div class="container">
-        <div class="jumbotron">
-            <h1>Adding clothes</h1>
-        </div>
 </div>
 
-<form action="/admin/clothing/create" method="POST">
-    <p>Наименование :<input type="text" name="name", value=""></p>
-    <p>Country :<input type="text" name="country" value=""></p>
-    <p>Description :<input type="text" name="Description" value=""></p>
-    <p><input type="submit" value="Сохранить">
-</form>
+  {% include 'footer.html' %}
 
+</body>
 
-
-
-
-
-
-</form>
