@@ -94,13 +94,13 @@ def populate_database():
 
     s1 = Client(email='js@gmail.com', password='1245', name='John', country='russia', address='192111 Moscow')
 
-    c1 = Category(name='Pants')
-    c2 = Category(name='Shoes')
+    c1 = Category(name=u'Брюки')
+    c2 = Category(name=u'Сорочки')
 
     b1 = Brand (name = 'Nike', country = 'usa')
 
-    cl1 = Clothing(name='Pants N1',price = 500, category = c1, brand = b1)
-    cl2 = Clothing(name='Pants N2',price = 500, category = c1, brand = b1)
+    cl1 = Clothing(name=u'Брюки',price = 500, category = c1, brand = b1)
+    cl2 = Clothing(name=u'Сорочки',price = 500, category = c2, brand = b1)
 
 
 
