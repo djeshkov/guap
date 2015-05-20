@@ -1,62 +1,26 @@
 <!DOCTYPE html>
 
-
-
-<html lang="en">
 <head>
   <meta charset="utf-8">
-
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/theme.css') }}">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">
-
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/my.css') }}">
-
-
 </head>
 
+<body>
 
-<div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
+{% include 'header.html' %}
+
+
+<div class="col-sm-4 col-md-12 sidebar">
+          <ul class="nav-sidebar">
             <li class="active"><a href="#">Overview</a></li>
             <li><a href="/admin/brands">Бренды</a></li>
             <li><a href="/admin/clothing">Товары</a></li>
             <li><a href="/admin/clients">Клиенты</a></li>
-
           </ul>
-<!--
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-          </ul>
--->
-        </div>
+</div>
 
-<!--
+{% include 'footer.html' %}
 
-<h1>
-
-
-	<ul>
-		{% for categories in categories %}
-
-		  <li><a href="catalog/{{categories.name}}">{{categories.name}}</a></li>
-
-
-		{% endfor %}
-
-	</ul>
-
-      <ul>
-          <li><a href="/admin/brands">Бренды</a></li>
-          <li><a href="/admin/clothing">Товары</a></li>
-          <li><a href="/admin/clients">Клиенты</a></li>
-
-        </ul>
-</h1>
+</body>
