@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/my.css') }}">
+
+
+</head>
+
+
+<div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+		 {% for clothing in clothing %}
+
+                  <li><a href="/admin/clothing/{{clothing.id}}">{{clothing.name}}</a></li>
+
+
+                {% endfor %}
+
+    <a href="/admin/clothing/create">
+   <button>Добавить новый</button>
+</a>
+
+          </ul>
+</div>
+
+
+

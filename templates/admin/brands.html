@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/my.css') }}">
+
+
+</head>
+
+
+<div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+	<ul>
+		{% for brands in brands %}
+
+		  <li><a href="/admin/brands/{{brands.id}}">{{brands.name}}</a></li>
+
+
+		{% endfor %}
+
+	</ul>
+
+
+    <a href="/admin/brands/create">
+   <button>Добавить новый</button>
+   </a>
+

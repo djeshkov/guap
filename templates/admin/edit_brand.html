@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/my.css') }}">
+
+
+</head>
+
+
+<div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+		<h1>Редактирование брэнда</h1>
+		<form action="/admin/brands/{{ brand.id }}" method="POST">
+		    <p>Name :<input type="text" name="name", value="{{brand.name}}"></p>
+		    <p>Country :<input type="text" name="country" value="{{brand.country}}"></p>
+		    <p><input type="submit" value="Сохранить">
+		</form>
+		<form action="/admin/brands/delete" method="POST">
+		    <p><input type="hidden" name="id", value="{{brand.id}}"></p>
+		    <p><input type="submit" value="Удалить">
+		</form>
+
+	  </ul>
+</div>
+
+

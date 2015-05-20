@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/my.css') }}">
+
+
+</head>
+
+
+<h1>Adding clothing</h1>
+<form action="/admin/clothing/create" method="POST">
+
+
+
+
+
+    <p>Name :<input type="text" name="name", value=""></p>
+    <p>Price :<input type="text" name="price" value=""></p>
+    <p>Description :<input type="text" name="Description" value=""></p>
+
+    <p><select  name="Category">
+    <option disabled>Choose Category</option>
+
+                {% for categories in categories %}
+
+                  <option value="{{categories.id}}">{{categories.name}}</option>
+
+
+                {% endfor %}
+
+
+   </select></p>
+
+
+
+
+    <p><select  name="Brand"> 
+    <option disabled>Choose Brand</option>
+
+                {% for brands in brands %}
+
+		  <option value="{{brands.id}}">{{brands.name}}</option>
+
+
+                {% endfor %}
+
+
+   </select></p>
+
+    <p><input type="submit" value="Сохранить">
+
+
+
+</form>
