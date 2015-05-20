@@ -125,15 +125,18 @@ def create_clothing_name():
         #rc = Category(name=request.form['Category'])
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
+            #name,ext = os.path.splitext(savepath)
             savepath=os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            name,ext = os.path.splitext(savepath)
+            ext= name,ext
             file.save(savepath)
             #image = Images(name=filename, type="pix", path=savepath, Clothing=request.form['name'])
             #return redirect(url_for('uploaded_file',
             #filename=filename))
         clothing = Clothing(name=request.form['name'], price=request.form['price'], category=request.form['Category'],
                             brand=request.form['Brand'])
-        #image = Images(name=filename, type="pix", path=savepath, Clothing=clothing)
-
+        flush()
+        image = Images(name=filename, type=ext, path=savepath, Clothing=clothing.id)
         flush()
         url = url_for('edit_goods')
         return redirect(url)
