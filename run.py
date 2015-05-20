@@ -102,10 +102,9 @@ def edit_goods():
 @db_session
 def create_clothing_name():
     if request.method == 'POST':
-
         clothing = Clothing(name=request.form['name'], price= request.form['price'], category= request.form['Category'], brand= request.form['Brand'])
         flush()
-        url = url_for('edit_brands')
+        url = url_for('edit_goods')
         return redirect(url)
     else:
         brands = Brand.select().order_by(Brand.name)

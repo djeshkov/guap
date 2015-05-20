@@ -13,11 +13,40 @@
 <body>
 
 {% include 'header.html' %}
+<form action="/admin/clothing/create" method="POST">
+  <div class="form-group">
+    <label for="InputName">Наименование товара</label>
+    <input type="text" class="form-control" id="InputName" placeholder="Введите наименование товара">
+    <form class="form-inline">
+     <label for="InputAmount">Стоимость</label>
+     <label class="sr-only" for="InputAmount">Введите стоимость в рублях</label>
+     <div class="input-group">
+        <div class="input-group-addon">&#8381;</div>
+        <input type="number" class="form-control" id="InputAmount" placeholder="Введите стоимость в рублях">
+        <div class="input-group-addon">.00</div>
+     </div>
 
-<div class="container">
-</div>
+     <div class="form-group">
+            <label for="SelectBrand">Выбор бренда</label>
+            <select class="form-control" id="SelectBrand">
+                {% for brands in brands %}
+                    <option>{{brands.name}}</option>
+		        {% endfor %}
+            </select>
+     </div>
+     <div class="form-group">
+            <label for="SelectCategory">Выбор категории товара</label>
+            <select class="form-control" id="SelectCategory">
+                {% for categories in categories %}
+                    <option>{{categories.name}}</option>
+		        {% endfor %}
+            </select>
+     </div>
+     <button type="submit" class="btn btn-default">Сохранить</button>
+  </div>
+</form>
 
-  {% include 'footer.html' %}
+{% include 'footer.html' %}
 
 </body>
 
