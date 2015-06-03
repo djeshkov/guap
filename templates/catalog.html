@@ -1,39 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <title>Home Page | Web Shop prikid.ru</title>
+  <meta charset="utf-8">
 
-
-  <!--<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">-->
-  <!--<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">-->
-
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/theme.css') }}">
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/my.css') }}">
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="/static/js/jquery.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/knockout.js"></script>
+  <script src="/static/js/underscore.js"></script>
+  <script src="/static/js/pony.js"></script>
+    {% include 'header.html' %}
+      <script type="text/javascript">
+        var model = {
+            categories: ko.observableArray([]),
+            clothings: ko.observableArray([]),
+            groups: ko.observableArray([]),
+            courses: ko.observableArray([]),
+            students: ko.observableArray([]),
+            selectedCat: ko.observable(),
+            selectedCourse: ko.observable(),
+            selectedGroup: ko.observable(),
+            studentsOf: ko.observable(),
+            onDeptClick: function(dept) {
+                model.students.removeAll();
+                model.selectedDept(dept);
+                model.selectedCourse(undefined);
+                model.selectedGroup(undefined);
+                model.groups(model.selectedDept().groups());
+                model.courses(model.selectedDept().courses());
+            },
+            onCatClick: function(cat) {
+                model.selectedCat(cat);
+                model.clothings(cat.clothing());
+            },
+
+            cancelClicked: function() {
+                location.reload();
+            }
+        };
+        var getData = function(url, func) {
+            $.ajax({
+                url: url,
+                dataType: 'json',
+                success: function(json) {
+                    var data = pony.unmarshalData(json);
+                    func(data);
+                }
+            })
+        };
+        $().ready(function() {
+            getData('/get_categories', function(data) {
+                model.categories(data);
+            });
+            ko.applyBindings(model);
+        });
+    </script>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+        td {
+            cursor: pointer;
+        }
+        caption {
+            font-weight: bold;
+        }
+        .margin-top-8 {
+            margin-top: 8px;
+        }
+    </style>
 </head>
-
 <body>
-{% include 'header.html' %}
-
-<div class="container">
-
-<h1>
 
 
-		{% for categories in categories %}
-           <div class="list-group">
-             <a href="catalog/{{categories.name}}" class="list-group-item ">
-             <h4 class="list-group-item-heading">{{categories.name}}</h4>
-             <p class="list-group-item-text"></p>
-             </a>
-           </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <table class="table table-bordered">
+                    <caption>Категории одежды</caption>
+                    <thead>
+                        <tr>
+                            <th class="text-center">Номер категории</th>
+                            <th class="text-center">Наименование</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: categories">
+                        <tr data-bind="click: $root.onCatClick">
+                            <td data-bind="text: id" class="text-center"></td>
+                            <td data-bind="text: name" class="text-center"></td>
+                        </tr>
+                           <!-- <td>
+                                <input type="text" class="form-control" data-bind="value: name, valueUpdate:'afterkeydown'">
+                            </td>-->
 
-
-		{% endfor %}
-
-	<!--</ul>-->
-</h1>
-
-</div>
-
-  {% include 'footer.html' %}
-
+                    </tbody>
+                </table>
+            </div>
+          </div>
+    </div>
+    <div class="row">
+            <div class="col-lg-4">
+                <table class="table table-bordered" data-bind="if: clothings().length > 0">
+                    <caption data-bind="text: 'Список товаром категории: ' + selectedCat().name()"></caption>
+                    <thead>
+                        <tr>
+                            <th class="text-center">Наименование</th>
+                            <th class="text-center">Цена в рублях</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: clothings">
+                        <tr data-bind="click: $root.onGroupClick">
+                            <td data-bind="text: name" class="text-center"></td>
+                            <td data-bind="text: price" class="text-center"></td>
+                            <!--<td>
+                                <input type="text" class="form-control" data-bind="value: price, valueUpdate:'afterkeydown'">
+                            </td>-->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 </body>
 
+
+
+  {% include 'footer.html' %}

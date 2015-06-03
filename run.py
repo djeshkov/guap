@@ -7,9 +7,10 @@ from contextlib import closing
 # all the imports
 import os
 
-from werkzeug import secure_filename
+from werkzeug import *
 import sqlite3
 import json
+from werkzeug.utils import secure_filename
 from js import *
 from flask import Flask, request, session, g, redirect, url_for, \
     abort, render_template, flash
@@ -22,8 +23,9 @@ DEBUG = True
 SECRET_KEY = 'development key'
 USERNAME = 'admin'
 PASSWORD = 'default'
-
-UPLOAD_FOLDER = 'C:\Users\comp-79\PycharmProjects\guap\uploads'
+#Windos
+#UPLOAD_FOLDER = 'C:\Users\comp-79\PycharmProjects\guap\uploads'
+UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 
@@ -151,12 +153,19 @@ def create_clothing_name():
 def index():
     return render_template("contacts.html")
 
-
-@app.route('/catalog')
+@app.route('/get_categories')
 @db_session
 def get_categories():
     categories = Category.select().order_by(Category.name)
+
+    return to_json(db, categories, include=[Category.clothing] )
+
+@app.route('/catalog')
+@db_session
+def get_catalog():
+    categories = Category.select().order_by(Category.name)
     return render_template('catalog.html', categories=categories)
+
 
 
 @app.route('/catalog/<name>')

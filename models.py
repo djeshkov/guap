@@ -99,8 +99,8 @@ def populate_database():
 
     b1 = Brand (name = 'Nike', country = 'usa')
 
-    cl1 = Clothing(name=u'Брюки',price = 500, category = c1, brand = b1)
-    cl2 = Clothing(name=u'Сорочки',price = 500, category = c2, brand = b1)
+    cl1 = Clothing(name=u'Брюки обыкновенные',price = 500, category = c1, brand = b1)
+    cl2 = Clothing(name=u'Сорочки расписные',price = 500, category = c2, brand = b1)
 
 
 
