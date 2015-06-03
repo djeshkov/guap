@@ -58,9 +58,6 @@
             getData('/get_categories', function(data) {
                 model.categories(data);
             });
-            getData('/get_pictures', function(data) {
-                model.pictures(data);
-            });
             ko.applyBindings(model);
         });
 
