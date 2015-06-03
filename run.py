@@ -25,7 +25,7 @@ USERNAME = 'admin'
 PASSWORD = 'default'
 #Windos
 #UPLOAD_FOLDER = 'C:\Users\comp-79\PycharmProjects\guap\uploads'
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = 'static/Upload'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 
@@ -130,7 +130,6 @@ def create_clothing_name():
             #name,ext = os.path.splitext(savepath)
             savepath=os.path.join(app.config['UPLOAD_FOLDER'], filename)
             name,ext = os.path.splitext(savepath)
-            ext= name,ext
             file.save(savepath)
             #image = Images(name=filename, type="pix", path=savepath, Clothing=request.form['name'])
             #return redirect(url_for('uploaded_file',
@@ -158,7 +157,7 @@ def index():
 def get_categories():
     categories = Category.select().order_by(Category.name)
 
-    return to_json(db, categories, include=[Category.clothing] )
+    return to_json(db, categories, include=[Category.clothing, Category.clothing] )
 
 @app.route('/catalog')
 @db_session
