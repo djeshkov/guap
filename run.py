@@ -157,7 +157,15 @@ def index():
 def get_categories():
     categories = Category.select().order_by(Category.name)
 
-    return to_json(db, categories, include=[Category.clothing, Category.clothing] )
+    return to_json(db, categories, include=[Category.clothing,Clothing.picture] )
+
+@app.route('/get_pictures')
+@db_session
+def get_pictures():
+    pictures = Clothing.select().order_by(Clothing.name)
+    return to_json(db, pictures, include=[Clothing.picture] )
+
+
 
 @app.route('/catalog')
 @db_session

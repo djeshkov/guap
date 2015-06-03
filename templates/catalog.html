@@ -19,6 +19,7 @@
         var model = {
             categories: ko.observableArray([]),
             clothings: ko.observableArray([]),
+            pictures: ko.observableArray([]),
             groups: ko.observableArray([]),
             courses: ko.observableArray([]),
             students: ko.observableArray([]),
@@ -57,8 +58,12 @@
             getData('/get_categories', function(data) {
                 model.categories(data);
             });
+            getData('/get_pictures', function(data) {
+                model.pictures(data);
+            });
             ko.applyBindings(model);
         });
+
     </script>
     <style>
         body {
@@ -117,8 +122,11 @@
                         <tr data-bind="click: $root.onGroupClick">
                             <td data-bind="text: name" class="text-center"></td>
                             <td data-bind="text: price" class="text-center"></td>
-                           <!-- <td><img data-bind="attr:{ image.path + image.name + image.type }"></td>-->
-                               <td><img src="/static/images/Boston_City_Flow.jpg" style="width:100px;height:100px;"></td>
+
+                            <td data-bind="foreach: picture">
+                                <img data-bind="attr:{src: path }" style="width:100px;height:100px;">
+                            </td>
+                               <!--<td><img src="/static/images/Boston_City_Flow.jpg" style="width:100px;height:100px;"></td>-->
 
 
                             <!--<td>
