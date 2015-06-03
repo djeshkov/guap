@@ -101,6 +101,16 @@ def delete_brand_id():
     url = url_for('edit_brands')
     return redirect(url)
 
+@app.route('/admin/clothing/delete', methods=['POST'])
+@db_session
+def delete_cl_id():
+    clothing = Clothing[request.form['id']]
+    clothing.delete()
+    url = url_for('edit_goods')
+    #url = url_for('edit_clothing')
+    return redirect(url)
+    #return "ok"
+
 
 @app.route('/admin/clients')
 @db_session
@@ -115,6 +125,16 @@ def edit_goods():
 
     return render_template('/admin/clothing.html', clothing=clothing)
 
+
+@app.route('/admin/clothing/<id>', methods=['GET', 'POST'])
+@db_session
+def edit_clothing_name(id):
+    clothing = Clothing[id]
+    pix = clothing.picture
+    if request.method == 'POST':
+        clothing.name = request.form['name']
+        clothing.price = request.form['price']
+    return render_template('edit_clothing.html', clothing=clothing)
 
 @app.route('/admin/clothing/create', methods=['GET', 'POST'])
 @db_session

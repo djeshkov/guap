@@ -1,0 +1,18 @@
+<h1>Редактирование брэнда</h1>
+<form action="/admin/clothing/{{ clothing.id }}" method="POST">
+    <p>Name :<input type="text" name="name", value="{{clothing.name}}"></p>
+    <p>Price :<input type="text" name="price" value="{{clothing.price}}"></p>
+    <p><input type="submit" value="Сохранить">
+</form>
+<form action="/admin/clothing/delete" method="POST">
+    <p><input type="hidden" name="id", value="{{clothing.id}}"></p>
+    <p><input type="submit" value="Удалить">
+</form>
+
+		{% for picture in clothing.picture %}
+
+		  <img src="/static/Upload/{{picture.name}}">
+
+
+		{% endfor %}
+
